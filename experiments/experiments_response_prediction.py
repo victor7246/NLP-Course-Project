@@ -3,6 +3,16 @@ from __future__ import absolute_import
 import os
 import sys
 
+try:
+    sys.path.append(os.path.join(os.path.dirname(__file__), './drive/My Drive/CMC/'))
+except:
+    sys.path.append(os.path.join(os.getcwd(), './drive/My Drive/CMC/'))
+    
+try:
+    sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
+except:
+    sys.path.append(os.path.join(os.getcwd(), '../'))
+    
 import tensorflow_datasets as tfds
 import tensorflow as tf
 

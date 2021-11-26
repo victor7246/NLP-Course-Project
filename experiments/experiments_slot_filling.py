@@ -1,4 +1,3 @@
-
 from __future__ import absolute_import
 
 import sys
@@ -60,7 +59,7 @@ parser = argparse.ArgumentParser(prog='Trainer',conflict_handler='resolve')
 
 #parser.add_argument('--train_data', type=str, default='./drive/My Drive/CMC/data/IIITH_Codemixed.txt', required=False,
 #                    help='train data')
-parser.add_argument('--train_data', type=str, default='data/IITMadras-CodeMixIntent/GCN-SeA/data/be-dstc2/', required=False,
+parser.add_argument('--train_data', type=str, default='../data/IITMadras-CodeMixIntent/GCN-SeA/data/be-dstc2/', required=False,
                     help='train data')
 parser.add_argument('--val_data', type=str, default=None, required=False,
                     help='validation data')

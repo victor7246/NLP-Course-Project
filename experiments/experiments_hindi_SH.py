@@ -255,7 +255,7 @@ for x in train_outputs:
     new_train_outputs.append(1)
 '''
 
-all_models = {HIT_outer.__name__:HIT_outer,HIT.__name__: HIT, CS_ELMO_without_words.__name__: CS_ELMO_without_words, Transformer.__name__: Transformer, HAN.__name__: HAN}
+all_models = {HIT_outer.__name__:HIT_outer,HIT.__name__: HIT, CS_ELMO_without_words.__name__: CS_ELMO_without_words, HAN.__name__: HAN}
 #HIT_without_words.__name__:HIT_without_words, CS_ELMO_without_words.__name__: CS_ELMO_without_words, AttentionAt      
 #all_models = {HIT.__name__: HIT}
 #args.epochs = 20

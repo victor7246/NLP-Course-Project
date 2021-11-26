@@ -1,13 +1,3 @@
-
-from __future__ import absolute_import
-
-import sys
-import os
-
-sys.path.append('./drive/My Drive/CMC/')
-
-#!wandb login
-
 from __future__ import absolute_import
 
 import sys
