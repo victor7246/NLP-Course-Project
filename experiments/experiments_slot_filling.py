@@ -177,8 +177,6 @@ try:
 except OSError:
     pass
 
-word_tokenizer.texts_to_sequences(texts[1:2])
-
 train_df.category = train_df.category.apply(lambda x: x.split(',')[0])
 val_df.category = val_df.category.apply(lambda x: x.split(',')[0])
 test_df.category = test_df.category.apply(lambda x: x.split(',')[0])

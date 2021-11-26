@@ -58,7 +58,7 @@ print (_has_wandb)
 
 parser = argparse.ArgumentParser(prog='Trainer',conflict_handler='resolve')
 
-parser.add_argument('--data_path', type=str, default='./drive/My Drive/CMC/data/', required=False,
+parser.add_argument('--data_path', type=str, default='../data/', required=False,
                     help='train data')
 #parser.add_argument('--data_path', type=str, default='../data/', required=False,
 #                    help='train data')
