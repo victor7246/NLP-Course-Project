@@ -105,7 +105,7 @@ parser.add_argument('--train_batch_size', type=int, default=32, required=False,
 parser.add_argument('--eval_batch_size', type=int, default=16, required=False,
                     help='eval batch size')
 
-parser.add_argument('--model_save_path', type=str, default='./drive/My Drive/CMC/models/model_hindi_ZSL/', required=False,
+parser.add_argument('--model_save_path', type=str, default='../models/model_hindi_ZSL/', required=False,
                     help='seed')
 
 #parser.add_argument('--model_save_path', type=str, default='../models/model_hindi_ZSL/', required=False,
@@ -126,7 +126,7 @@ np.random.seed(args.seed)
 """### Prepare data for ZSL on 3 different tasks - Hindi"""
 
 full_data = []
-for file in ['IIITH_Codemixed.txt', 'hindi_humour-codemix.txt', 'hindi_sarcasm-codemix.txt']:
+for file in ['IIITH_Codemixed.txt', 'hindi_humour.txt', 'hindi_sarcasm.txt']:
     if file == 'IIITH_Codemixed.txt':
         df = pd.read_csv(os.path.join(args.data_path, file), sep='\t',header=None,usecols=[1,2])
         df.columns = ['text','category']
