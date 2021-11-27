@@ -276,8 +276,9 @@ n_out = len(label2idx)
               #CS_ELMO_without_words.__name__: CS_ELMO_without_words, 
               #Transformer.__name__: Transformer, HAN.__name__: HAN}
 #HIT_without_words.__name__:HIT_without_words, CS_ELMO_without_words.__name__: CS_ELMO_without_words, AttentionAt      
-all_models = {HIT_outer.__name__:HIT_outer,HIT.__name__: HIT}
+#all_models = {HIT_outer.__name__:HIT_outer,HIT.__name__: HIT}
 #all_models = {HIT.__name__: HIT, }
+all_models = {CS_ELMO_without_words.__name__: CS_ELMO_without_words, HAN.__name__: HAN}
 
 _has_wandb = False
 

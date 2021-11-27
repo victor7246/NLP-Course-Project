@@ -12,7 +12,7 @@ try:
     sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
 except:
     sys.path.append(os.path.join(os.getcwd(), '../'))
-    
+
 import tensorflow_datasets as tfds
 import tensorflow as tf
 
@@ -852,11 +852,12 @@ def f1_keras(y_true, y_pred):
 
 
 
-#all_models = {HIT.__name__: HIT, HIT_without_words.__name__:HIT_without_words}#CS_ELMO_without_words.__name__: CS_ELMO_without_words, HAN.__name__: HAN}
+all_models = {HIT.__name__: HIT, HIT_outer.__name__:HIT_outer, CS_ELMO_without_words.__name__: CS_ELMO_without_words, HAN.__name__: HAN}
 #HIT_without_words.__name__:HIT_without_words, CS_ELMO_without_words.__name__: CS_ELMO_without_words, AttentionAt      
+
 #all_models = {HIT_outer.__name__:HIT_outer,HIT.__name__: HIT, HIT_without_words.__name__:HIT_without_words, }
 
-all_models = {HIT_outer.__name__:HIT_outer}
+#all_models = {HIT_outer.__name__:HIT_outer}
 
 _has_wandb = False
 

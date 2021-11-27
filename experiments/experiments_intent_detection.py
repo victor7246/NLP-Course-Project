@@ -251,7 +251,8 @@ n_out = len(label2idx)
               #Transformer.__name__: Transformer, HAN.__name__: HAN}
 #HIT_without_words.__name__:HIT_without_words, CS_ELMO_without_words.__name__: CS_ELMO_without_words, AttentionAt      
 #all_models = {HIT_outer.__name__:HIT_outer,HIT.__name__: HIT}
-all_models = {HIT.__name__: HIT}
+#all_models = {HIT.__name__: HIT}
+all_models = {}
 args.epochs = 10
 
 _has_wandb = False
@@ -373,7 +374,8 @@ for model_name, model_ in all_models.items():
               #Transformer.__name__: Transformer, HAN.__name__: HAN}
 #HIT_without_words.__name__:HIT_without_words, CS_ELMO_without_words.__name__: CS_ELMO_without_words, AttentionAt      
 #all_models = {HIT_outer.__name__:HIT_outer,HIT.__name__: HIT}
-all_models = {HIT_outer.__name__:HIT_outer}
+#all_models = {HIT_outer.__name__:HIT_outer}
+all_models = {CS_ELMO_without_words.__name__: CS_ELMO_without_words, HAN.__name__: HAN}
 
 _has_wandb = False
 
@@ -388,9 +390,9 @@ else:
 
 for model_name, model_ in all_models.items():
     
-    for loss in ['ce', 'focal']:
+    for loss in ['ce']:
         
-        for use_features in [True, False]:
+        for use_features in [True]:
             
             if use_features == False:
                 model = model_(word_vocab_size=n_words,char_vocab_size=n_chars,wpe_vocab_size=n_subwords, n_out=n_out,max_word_char_len=args.max_word_char_len,\
