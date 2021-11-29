@@ -12,10 +12,10 @@ except:
 
 import argparse
 
-try:
-    sys.path.append(os.path.join(os.path.dirname(__file__), './drive/My Drive/CMC/'))
-except:
-    sys.path.append(os.path.join(os.getcwd(), './drive/My Drive/CMC/'))
+#try:
+#    sys.path.append(os.path.join(os.path.dirname(__file__), './drive/My Drive/CMC/'))
+#except:
+#    sys.path.append(os.path.join(os.getcwd(), './drive/My Drive/CMC/'))
     
 try:
     sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
@@ -374,8 +374,8 @@ for model_name, model_ in all_models.items():
               #Transformer.__name__: Transformer, HAN.__name__: HAN}
 #HIT_without_words.__name__:HIT_without_words, CS_ELMO_without_words.__name__: CS_ELMO_without_words, AttentionAt      
 #all_models = {HIT_outer.__name__:HIT_outer,HIT.__name__: HIT}
-#all_models = {HIT_outer.__name__:HIT_outer}
-all_models = {CS_ELMO_without_words.__name__: CS_ELMO_without_words, HAN.__name__: HAN}
+all_models = {HIT_outer.__name__:HIT_outer}
+#all_models = {CS_ELMO_without_words.__name__: CS_ELMO_without_words, HAN.__name__: HAN}
 
 _has_wandb = False
 

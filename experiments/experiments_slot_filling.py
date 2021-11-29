@@ -12,10 +12,10 @@ except:
 
 import argparse
 
-try:
-    sys.path.append(os.path.join(os.path.dirname(__file__), './drive/My Drive/CMC/'))
-except:
-    sys.path.append(os.path.join(os.getcwd(), './drive/My Drive/CMC/'))
+#try:
+#    sys.path.append(os.path.join(os.path.dirname(__file__), './drive/My Drive/CMC/'))
+#except:
+#    sys.path.append(os.path.join(os.getcwd(), './drive/My Drive/CMC/'))
     
 try:
     sys.path.append(os.path.join(os.path.dirname(__file__), '../'))

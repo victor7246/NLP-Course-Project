@@ -12,10 +12,10 @@ except:
 
 import argparse
 
-try:
-    sys.path.append(os.path.join(os.path.dirname(__file__), './drive/My Drive/CMC/'))
-except:
-    sys.path.append(os.path.join(os.getcwd(), './drive/My Drive/CMC/'))
+#try:
+#    sys.path.append(os.path.join(os.path.dirname(__file__), './drive/My Drive/CMC/'))
+#except:
+#    sys.path.append(os.path.join(os.getcwd(), './drive/My Drive/CMC/'))
     
 try:
     sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
@@ -130,15 +130,18 @@ for file in ['IIITH_Codemixed.txt', 'hindi_humour.txt', 'hindi_sarcasm.txt']:
     if file == 'IIITH_Codemixed.txt':
         df = pd.read_csv(os.path.join(args.data_path, file), sep='\t',header=None,usecols=[1,2])
         df.columns = ['text','category']
+        df = df.dropna().reset_index(drop=True)
         df['task'] = 'Sentiment'
     elif file == 'hindi_humour-codemix.txt':
         df = pd.read_csv(os.path.join(args.data_path, file), sep='\t',header=None)
         df.columns = ['text','category']
+        df = df.dropna().reset_index(drop=True)
         df['category'] = df['category'].apply(lambda x: "Humor" if x == 1 else "No Humor")
         df['task'] = 'Humor'
     else:
         df = pd.read_csv(os.path.join(args.data_path, file), sep='\t',header=None)
         df.columns = ['text','category']
+        df = df.dropna().reset_index(drop=True)
         df['category'] = df['category'].apply(lambda x: "Sarcasm" if x == 1 else "No Sarcasm")
         df['task'] = 'Sarcasm'
     full_data.append(df)
@@ -860,9 +863,10 @@ for model_name, model_ in all_models.items():
             #print (zsl_df_test[zsl_df_test.target == 0].groupby(['category'])['pred_target'].value_counts(normalize=True))
             zsl_df_test_uniq = zsl_df_test.groupby(['text'])['pred_proba'].max().reset_index(drop=False)
             zsl_df_test_ = pd.merge(zsl_df_test, zsl_df_test_uniq,how='inner')
-            print (zsl_df_test_.groupby(['task']).apply(lambda x: accuracy_score(x.category, x['actual category'])), zsl_df_test_.groupby(['task']).apply(lambda x: f1_score(x.category, x['actual category'],average='weighted')), zsl_df_test_.groupby(['task']).apply(lambda x: f1_score(x.category, x['actual category'],average='macro')), zsl_df_test_.groupby(['task']).apply(lambda x: precision_score(x.category, x['actual category'],average='macro')), zsl_df_test_.groupby(['task']).apply(lambda x: recall_score(x.category, x['actual category'],average='macro')), zsl_df_test_.groupby(['task']).apply(lambda x: confusion_matrix(x.category, x['actual category'])))
+            #print (zsl_df_test_.groupby(['task']).apply(lambda x: accuracy_score(x.category, x['actual category'])), zsl_df_test_.groupby(['task']).apply(lambda x: f1_score(x.category, x['actual category'],average='weighted')), zsl_df_test_.groupby(['task']).apply(lambda x: f1_score(x.category, x['actual category'],average='macro')), zsl_df_test_.groupby(['task']).apply(lambda x: precision_score(x.category, x['actual category'],average='macro')), zsl_df_test_.groupby(['task']).apply(lambda x: recall_score(x.category, x['actual category'],average='macro')), zsl_df_test_.groupby(['task']).apply(lambda x: confusion_matrix(x.category, x['actual category'])))
             #break
-
+            print (zsl_df_test_.groupby(['task']).apply(lambda x: f1_score(x.category, x['actual category'],average='weighted')))
+            
             #results.to_csv(os.path.join(args.model_save_path,'results.csv'),index=False)
             #except:
             #    pass
@@ -924,9 +928,9 @@ for task in zsl_df_train.task.unique():
                   }
 
               if use_features == True:
-                  model_save_path = os.path.join(args.model_save_path, '{}_{}_with_features.h5'.format(model_name, config['loss']))
+                  model_save_path = os.path.join(args.model_save_path, '{}2_{}_with_features.h5'.format(model_name, config['loss']))
               else:
-                  model_save_path = os.path.join(args.model_save_path, '{}_{}_without_features.h5'.format(model_name, config['loss']))
+                  model_save_path = os.path.join(args.model_save_path, '{}2_{}_without_features.h5'.format(model_name, config['loss']))
 
               #f1callback = models.utils.F1Callback(model, [word_val_inputs, char_val_inputs, subword_val_inputs, val_tfidf],\
               #                          val_outputs, \
@@ -981,9 +985,10 @@ for task in zsl_df_train.task.unique():
               #print (zsl_df_test[zsl_df_test.target == 0].groupby(['category'])['pred_target'].value_counts(normalize=True))
               zsl_df_test_uniq = zsl_df_test.groupby(['text'])['pred_proba'].max().reset_index(drop=False)
               zsl_df_test_ = pd.merge(zsl_df_test, zsl_df_test_uniq,how='inner')
-              print (zsl_df_test_.groupby(['task']).apply(lambda x: accuracy_score(x.category, x['actual category'])), zsl_df_test_.groupby(['task']).apply(lambda x: f1_score(x.category, x['actual category'],average='weighted')), zsl_df_test_.groupby(['task']).apply(lambda x: f1_score(x.category, x['actual category'],average='macro')), zsl_df_test_.groupby(['task']).apply(lambda x: confusion_matrix(x.category, x['actual category'])))
+              #print (zsl_df_test_.groupby(['task']).apply(lambda x: accuracy_score(x.category, x['actual category'])), zsl_df_test_.groupby(['task']).apply(lambda x: f1_score(x.category, x['actual category'],average='weighted')), zsl_df_test_.groupby(['task']).apply(lambda x: f1_score(x.category, x['actual category'],average='macro')), zsl_df_test_.groupby(['task']).apply(lambda x: confusion_matrix(x.category, x['actual category'])))
               #break
-
+              print (zsl_df_test_.groupby(['task']).apply(lambda x: f1_score(x.category, x['actual category'],average='weighted')))
+            
               #results.to_csv(os.path.join(args.model_save_path,'results.csv'),index=False)
               #except:
               #    pass
